@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
   end
 
   def new
+    @post = Post.new
   end
 
   def edit
@@ -19,4 +21,10 @@ class PostsController < ApplicationController
   
   def destroy
   end
+
+  Private
+  def post_params
+    params.require(:post).permit(:title, :content, :image, :image_cache)
+  end
+
 end
