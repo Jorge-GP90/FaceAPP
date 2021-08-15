@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
+    redirect_to new_post_path
   end
   
   def update
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
   def destroy
   end
 
-  Private
+  private
   def post_params
     params.require(:post).permit(:title, :content, :image, :image_cache)
   end
