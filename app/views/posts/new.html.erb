@@ -1,14 +1,4 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Create a Posts</h1>
+<br>
+<p><%= render 'form' %></p>
 
-<%= form_with(model: Post.new, local: true) do |form| %>
-  <div class="Post_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="Post_content">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <%= form.submit %>
-<% end %>

@@ -1,0 +1,28 @@
+<%= form_with(model: @post, local: true, url: choose_new_or_edit ) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @post.errors.count %>There are errors.</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="Post_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="Post_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <label class="send btn btn-default btn-block">
+    <div>
+  <%= form.submit  "post", class: "send"%>
+    </div>
+  </label>
+<% end %>
+
+
+<%= link_to 'Home', posts_path %>
