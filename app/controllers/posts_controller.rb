@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  include PostsHelper
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    if params[:back]
+      @post = current_user.posts.new(post_params)
+    else
+      @post = current_user.posts.new
+    end
   end
 
   def edit
@@ -15,12 +20,12 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
       if @post.save
-      redirect_to posts_path, notice: "new post created"
+      redirect_to posts_path(current_user.id), notice: "new post created"
       else
         render :new
       end
@@ -37,11 +42,11 @@ class PostsController < ApplicationController
   
   def destroy
     @post.destroy
-    redirect_to post_path, notice:"I deleted the post"
+    redirect_to user_path(current_user.id), notice:"I deleted the post"
   end
 
   def confirm
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
   end
 
