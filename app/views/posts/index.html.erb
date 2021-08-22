@@ -15,10 +15,23 @@
   <% @posts.each do |post|%>
   <tr>
     <td><%= post.title %></td>
+    <br>
     <td><%= post.content %></td>
+    <br>
+    <td>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <%= image_tag(post.image.url, size: "150x150") %>
+      </p>
+    </td>
+    <br>
     <td><%= link_to 'Details', post_path(post.id) %></td>
     <td><%= link_to "Edit", edit_post_path(post.id) %></td>
     <td><%= link_to "Delete", post_path(post.id), method: :delete, data: { confrim: 'Are you sure to delete it'} %></td>
   </tr>
 <% end %>
 </table>
+
+
+<br>
+<p id="notice"><%= notice %></p>

@@ -1,6 +1,13 @@
-<h1>Posts#show</h1>
-
 <h1>post details screen</h1>
 <p>Title: <%= @post.title %></p>
 <br>
 <p>Content: <%= @post.content %></p>
+
+<br>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @post.image.url, size: "150x150" %>
+</p>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'home', posts_path %>
