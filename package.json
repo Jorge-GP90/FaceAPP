@@ -1,5 +1,7 @@
 {
   "name": "faceapp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquey": "^0.0.1-security"
+  }
 }

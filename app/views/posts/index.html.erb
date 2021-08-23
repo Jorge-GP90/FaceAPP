@@ -21,7 +21,9 @@
     <td>
       <p id="notice"><%= notice %></p>
       <p>
-        <%= image_tag(post.image.url, size: "150x150") %>
+        <% if post.image.present? %>
+          <%= image_tag(post.image.url, size: "150x150") %>
+        <% end %>
       </p>
     </td>
     <br>
