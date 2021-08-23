@@ -1,0 +1,40 @@
+body {
+    background-color: #F0F2F6;
+  }
+  
+  header {
+    background-color: #1A76F2;
+    height: 50px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+  }
+  
+  header ul {
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  
+  header a {
+    color: #ffffff;
+  }
+  h3 {
+    margin: 0;
+  }
+  
+  .user_icon {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-right: 5px;
+  }
+  
+  .panel {
+    padding: 10px 20px;
+  }
