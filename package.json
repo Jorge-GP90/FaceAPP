@@ -2,6 +2,7 @@
   "name": "faceapp",
   "private": true,
   "dependencies": {
+    "bootstrap": "3",
     "jquey": "^0.0.1-security"
   }
 }
