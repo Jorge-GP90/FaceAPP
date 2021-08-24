@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include UsersHelper
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @users = User.all
   end
@@ -13,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    posts = current_user.posts.where.not(image: nil)
+    @posts = current_user.posts.all.order("id DESC")
   end
 
   def create

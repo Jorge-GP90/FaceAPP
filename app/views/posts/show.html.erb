@@ -1,13 +1,34 @@
-<h1>post details screen</h1>
-<p>Title: <%= @post.title %></p>
-<br>
-<p>Content: <%= @post.content %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6">
+      <div class="my_post panel panel-default">
+        <h3>Post</h3>
+      </div>
+      <div class="panel panel-default">
+        <ul class="list-inline list-unstyled">
+          <li><p class="bi bi-person-fill" class="post_username"><%= @post.user.name %></p></li>
+          <p class="post_timestamp"><small><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p>
+          <p class="post_content lead"><%= @post.content %></p>
+          <div class="post_image">
+          <% if @post.image.present? %>
+            <%= image_tag(@post.image.url, class: "img-responsive") %>
+          <% end %>
+          </div>
+          <li class="right">
+          <% if current_user.id == @post.user_id %>
+            <li class="right"><%= link_to "Edit", edit_post_path(@post.id) %></li>
+          <% end %>
+          </li>
+          <li class="right"><%= link_to "Home", posts_path %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+    </div>
+  </div>
+</div>
 
-<br>
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @post.image.url, size: "150x150" %>
-</p>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'home', posts_path %>
+
+

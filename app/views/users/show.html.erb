@@ -1,8 +1,83 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-
-<h1><%= @user.name %>page of</h1>
-<p>E-mail address: <%= @user.email %></p>
-<br>
-<p><%= link_to 'Home', posts_path %></p>
+<div class="main container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-6">
+        <h1><%= @user.name %></h1>
+        <% if current_user.id == @user.id %>
+          <div class="mypage_top">
+            <%= link_to "MyfaceAPP", posts_path %>
+          </div>
+          <div class="mypage_header">
+            <ul class="list-inline list-unstyled">
+              <li>Post</li>
+              <li>Others</li>
+            </ul>
+            <ul  class="list-inline list-unstyled">
+              <li><%= link_to "Add to Stories", posts_path %></li>
+              <li><%= link_to "Edit profil", edit_user_path(@user.id) %></li>
+              <li><%= link_to "Delete Profil", user_path(@user.id), method: :delete, data: {confirm: 'Are you sure to delete？'} %></li>
+            </ul>
+          </div>
+          <div class="self_introduction panel panel-default">
+            <h3 class="text-center"><i class="bi bi-person-fill">My info</i></h3>
+            <button class="btn btn-default btn-block">Edit Details</button>
+            <button class="btn btn-default btn-block">Add a hobby</button>
+            <button class="btn btn-default btn-block">Edit featured content</button>
+          </div>
+          <div class="post panel panel-default">
+            <ul class="list-inline list-unstyled">
+              <li><i class="bi bi-person-fill"></i></li>
+              <li><div class="lead"><%= link_to "#{current_user.name}  Share your feeling...", new_post_path %></div></li>
+            </ul>
+            <ul  class="list-inline list-unstyled">
+              <li>Live Video</li>
+              <li>Photos / Videos</li>
+              <li>Mood / Activity</li>
+            </ul>
+          </div>
+        <% end %>
+        <div class="my_image panel panel-default">
+          <h3>Photo</h3>
+          <%= link_to "All images", "#" %>
+          <% @posts.each do |post| %>
+            <div class="row" >
+            <% if post.image.present? %>
+              <div class="pull-left"><%= image_tag(post.image.url, height: "90") %></div>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="my_posts">
+          <h3>Post</h3>
+          <div class="">
+          <% @posts.each do |post| %>
+            <div class="panel panel-default">
+              
+              <ul class="list-inline list-unstyled" >
+                <li><i class="bi bi-person-fill"></i></li>
+                <li><p class="post_username"><%= post.user.name %></li>
+              </ul>
+              <p class="post_timestamp"><small><%=  post.updated_at.strftime("%Y-%m-%d %H:%M") %></small></p> 
+              <p class="post_content lead"><%= post.content %></p>
+              <% if post.image.present? %>
+                <ul class="list-inline list-unstyled" >
+                  <li><%= image_tag(post.image.url, class: "img-responsive") %></li>
+                </ul>
+              <% end %>
+              <ul class="list-inline list-unstyled">
+                <li><i class="bi bi-hand-thumbs-up-fill"></i><%= link_to "Like", "#" %></li> 
+                <li><%= link_to "Comment", "#" %></li> 
+                <li><%= link_to "details", edit_post_path(post.id) %></li> 
+              </ul>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3">
+      </div>
+    </div>
+  </div>
+</div>
