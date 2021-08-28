@@ -22,10 +22,10 @@
   </div>  
   <div class="image_upload panel panel-default">
     <ul class="list-inline list-unstyled">
-       <li class="right">
-        <% if (@post.content || @post.image).present? %>
-          <p><strong><%= link_to "Delete", post_path(@post.id), method: :delete, data: {confirm: 'Are you sure to delete？'} %></strong></p>
-        <% end %>
+      <li class="right">
+      <% if (@post.content || @post.image).present? %>
+        <p><strong><%= link_to "Delete", post_path(@post.id), method: :delete, data: {confirm: 'Are you sure to delete？'} %></strong></p>
+      <% end %>
       </li>
       <li class="right">
         <label>

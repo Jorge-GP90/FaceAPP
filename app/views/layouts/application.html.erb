@@ -16,13 +16,13 @@
         <li class="left"><i class="bi bi-house-fill"></i><%=link_to "Home", posts_path %></li>
       </ul>
       <ul class="list-inline list-unstyled">  
-        <% if logged_in? %> 
-          <li class="right"><%= link_to "Profile", user_path(current_user.id) %></li>
-          <i class="bi bi-box-arrow-in-left"></i><li class="right"><%= link_to "Log out", session_path(current_user.id), method: :delete %> </li>
-        <% else %> 
-          <li class="right"><%= link_to "Sign up", new_user_path %></li>
-          <li class="right"><%= link_to "Login", new_session_path %></li>
-        <% end %>
+      <% if logged_in? %> 
+        <li class="right"><%= link_to "Profile", user_path(current_user.id) %></li>
+        <i class="bi bi-box-arrow-in-left"></i><li class="right"><%= link_to "Log out", session_path(current_user.id), method: :delete %> </li>
+      <% else %> 
+        <li class="right"><%= link_to "Sign up", new_user_path %></li>
+        <li class="right"><%= link_to "Login", new_session_path %></li>
+      <% end %>
       </ul>
     </header>
     <% flash.each do |key, value| %> 
