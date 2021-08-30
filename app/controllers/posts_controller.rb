@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+
   def new
     if params[:back]
       @post = current_user.posts.new(post_params)
