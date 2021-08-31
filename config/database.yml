@@ -3,19 +3,16 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 development:
   <<: *default
   adapter: postgresql
   database: faceapp_development
   host: localhost
   port: 5432
-
 test:
   <<: *default
   adapter: postgresql
   database: faceapp_test
-
 production:
   <<: *default
   adapter: postgresql
