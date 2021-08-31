@@ -16,6 +16,7 @@ gem 'rails-ujs'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -29,7 +30,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'bcrypt'
 end
 
 group :test do
